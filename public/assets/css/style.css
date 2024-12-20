@@ -1,0 +1,70 @@
+.sidenav{
+    background-color: #002240;
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    z-index: 1;
+    overflow-x: hidden;
+}
+
+.sidenav a{
+    display: block;
+    text-decoration: none;
+    padding: 10px 15px 10px 16px;
+    font-size: 25px;
+    color: #fff;
+}
+.main{
+    background: #FFE4B5;
+    margin-left: 20%;
+    padding: 4px 10px;
+    width: 80%;
+    /* height: 100vh; */
+    color: #000;
+    display: inline-block;
+}
+.home-content{
+    /* display: flex;
+    justify-content: space-between; */
+}
+ .std{
+    width: 100%;
+    height: 30vh;
+    color: black;
+    background-color:#F0E68C;
+    text-align: center;
+    padding-top: 20px;
+ }
+
+ .tchr{
+    width: 100%;
+    margin-top: 20px;
+    height: 30vh;
+    color: black;
+    background-color:#FF8C00;
+    text-align: center;
+    padding-top: 20px;
+ }
+
+ .course{
+    width: 100%;
+    margin-top: 20px;
+    height: 30vh;
+    color: black;
+    background-color:#1E90FF;
+    text-align: center;
+    padding-top: 20px;
+ }
+
+ .enrollment{
+    width: 100%;
+    margin-top: 20px;
+    height: 150px;
+    color: black;
+    background-color:#EE82EE;
+    text-align: center;
+    padding-top: 20px;
+ }
