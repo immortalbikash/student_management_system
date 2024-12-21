@@ -10,7 +10,7 @@
             </ul>
         </div>
     @endif
-    <form method="POST" action="{{ route('students.store') }}">
+    <form method="POST" action="{{ route('Student.store') }}">
         @csrf
         <div class="form-group">
           <label for="name">Student Name</label>

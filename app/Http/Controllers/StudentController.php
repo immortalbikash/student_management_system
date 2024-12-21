@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $courses = Course::all();
+        return view('front_end.add_student', compact('courses'));
     }
 
     /**
@@ -32,7 +34,23 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $course = Course::where('id', $request['course_id'])->value('fee');
+        // echo "<pre>";
+        // print_r($course);
+        // exit;
+       $request->validate([
+        'name'=>'required|max:30',
+        'address' => 'required|max:30',
+        'contact' => 'required|numeric',
+       ]);
+       $request['fee'] = $course;
+       $request['remaining_fee'] = 0;   //paid ho but remaining bhayo
+        $requestData = $request->except('_token');
+        // echo "<pre>";
+        // print_r($requestData);
+        // exit;
+        $store = Student::create($requestData);
+        return redirect()->route('Student.index');
     }
 
     /**
