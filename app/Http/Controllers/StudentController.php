@@ -46,11 +46,11 @@ class StudentController extends Controller
        $request['fee'] = $course;
        $request['remaining_fee'] = 0;   //paid ho but remaining bhayo
         $requestData = $request->except('_token');
-        // echo "<pre>";
-        // print_r($requestData);
-        // exit;
-        $store = Student::create($requestData);
-        return redirect()->route('Student.index');
+        echo "<pre>";
+        print_r($requestData);
+        exit;
+        // $store = Student::create($requestData);
+        // return redirect()->route('Student.index');
     }
 
     /**
@@ -66,7 +66,12 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $courses = Course::all();
+        $student = Student::find($id);
+        // echo "<pre>";
+        // print_r($student);
+        // exit;
+        return view('front_end.edit_student', compact(['courses', 'student']));
     }
 
     /**
@@ -74,7 +79,28 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // echo "<pre>";
+        // print_r($request->all());
+        // exit;
+        $student = Student::find($id);
+        // echo "<pre>";
+        // print_r($student);
+        // exit;
+        $request->validate([
+            'name' => 'required|max:30',
+            'address' => 'required|max:30',
+            'contact' => 'required|numeric',
+            'course_id' => 'required|numeric',
+        ]);
+        $newFee = Course::where('id', $request['course_id'])->value('fee');
+        $request['fee'] = $newFee;
+        $request['remaining_fee'] = Student::find($id)->value('remaining_fee'); //paid ho remaining bhayo
+        $requestData = $request->except(['_token', '_method']);
+        $student->update($requestData);
+        return redirect()->route('Student.index')->with('Update', 'Student Updated');
+        // echo "<pre>";
+        // print_r($requestData);
+        // exit;
     }
 
     /**

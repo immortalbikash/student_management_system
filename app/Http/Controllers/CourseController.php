@@ -67,9 +67,9 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
 
-        // echo "<pre>";
-        // print_r($request->all());
-        // exit;
+        echo "<pre>";
+        print_r($request->all());
+        exit;
         $request->validate([
             'course_name' => 'required|max:20',
             'course_duration' => 'required|string',

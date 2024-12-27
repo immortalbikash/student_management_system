@@ -22,7 +22,7 @@
                         <td>{{ $student->address }}</td>
                         <td>{{ $student->getCourse->course_name }}</td>
                         <td>
-                            <a href="" class="btn btn-warning">Edit</a>
+                            <a href="{{ route('Student.edit', ['Student'=> $student->id]) }}" class="btn btn-warning">Edit</a>
                             <form method="POST" action="{{ route('Student.destroy', ['Student' => $student->id])}}">
                                 @csrf
                                 @method('DELETE')
